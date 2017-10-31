@@ -1,0 +1,6 @@
+[submodule "client"]
+	path = client
+	url = https://github.com/yonatankr/versions-tracker-client
+[submodule "api"]
+	path = api
+	url = https://github.com/yonatankr/versions-tracker-api
