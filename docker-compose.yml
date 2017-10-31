@@ -30,7 +30,7 @@ services:
     - db
    volumes:
     - api-data:/home/app/code/node_modules
-
+    - ./api:/home/app/code
 volumes:
   api-data:
   my-datavolume:
