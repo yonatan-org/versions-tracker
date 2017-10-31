@@ -1,6 +1,16 @@
 version: '2.1'
 
 services:
+  client:
+   build:
+     context: ./client
+     dockerfile: Dockerfile
+   volumes:
+    - web-data:/home/app/code/node_modules
+    - ./client:/home/app/code
+   ports:
+    - 3000:3000
+
   db:
     image: mysql
     restart: always
@@ -8,12 +18,10 @@ services:
       MYSQL_ROOT_PASSWORD: example
     volumes:
       - my-datavolume:/var/lib/mysql
-    ports:
-      - 3307:3306
 
   api:
    build:
-     context: .
+     context: ./api
      dockerfile: Dockerfile
    ports:
     - 3001:3001
@@ -22,8 +30,8 @@ services:
     - db
    volumes:
     - api-data:/home/app/code/node_modules
-    - ./:/home/app/code
 
 volumes:
   api-data:
   my-datavolume:
+  web-data:
